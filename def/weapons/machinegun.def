@@ -69,7 +69,7 @@ entityDef weapon_machinegun
 	"editor_menu"				"pickup"
 	"editor_var inv_weaponmod"	"comma separated of any of the following machinegun modifications.\n - wpmod_machinegun_ammo"
 
-	"spawnclass"				"idItem"
+	"spawnclass"				"" // Changed -> Removing the Machine Gun from the game
 	"weaponclass"				"rvWeaponMachinegun"
 	"size"						"32 32 32"
 	"model_view" 				"weapon_machinegun_view"

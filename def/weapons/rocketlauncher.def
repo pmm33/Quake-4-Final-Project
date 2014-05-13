@@ -54,7 +54,7 @@ entityDef weapon_rocketlauncher
 
 	"editor_usage"				"Rocket Launcher"
 
-	"spawnclass"				"idItem"
+	"spawnclass"				"" // Changed -> Removing the Rocket Launcher from the game
 	"weaponclass"				"rvWeaponRocketLauncher"
 	"size"						"32 32 32"
   	"model_view"				"weapon_rocketlauncher_view"

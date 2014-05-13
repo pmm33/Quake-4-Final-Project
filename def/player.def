@@ -748,7 +748,7 @@ entityDef player_marine
 	"max_ammo_hyperblaster"					"400"
 	"max_ammo_napalmgun"					"100"
 	"max_ammo_rocketlauncher"				"40"
-	"max_ammo_grenadelauncher"				"50"
+	"max_ammo_grenadelauncher"				"1" // Changed -> Can only hold one dodgeball at a time
 	"max_ammo_lightninggun"					"400"
 	"max_ammo_dmg"						"25"
 	"max_ammo_none"						"-1"
@@ -1054,8 +1054,8 @@ entityDef player_marine_mp
 {
 	"inherit"			"player_marine"
 
-	"weapon"			"weapon_machinegun,weapon_gauntlet"
-	"current_weapon"		"1"
+	"weapon"			"weapon_grenadelauncher,weapon_gauntlet" // Changed -> Start with the grenade launcher instead of the machine gun
+	"current_weapon"		"0" // Changed -> Set the current weapon to the gauntlet
 
 	// replce blaster with gauntlet in MP
 	"def_weapon0"						"weapon_gauntlet"

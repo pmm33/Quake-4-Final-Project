@@ -85,7 +85,7 @@ entityDef weapon_nailgun
 	"editor_maxs"				"16 16 32"
 	"editor_usage"				"Nailgun"
 
-	"spawnclass"				"idItem"
+	"spawnclass"				"" // Changed -> Removing the Nailgun from the game
 	"weaponclass"				"rvWeaponNailgun"
 	"size"						"32 32 32"
 	"model_view" 				"weapon_nailgun_view"

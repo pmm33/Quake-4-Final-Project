@@ -53,7 +53,7 @@ entityDef weapon_lightninggun
 	"editor_menu"				"pickup"
 	"editor_var inv_weaponmod"	"comma separated of any of the following lightning gun modifications.\n - weapon_lightninggun_chain"
 
-	"spawnclass"				"idItem"
+	"spawnclass"				"" // Changed -> Removing the Lightning Gun from the game
 	"weaponclass"				"rvWeaponLightningGun"
 	"size"						"32 32 32"
 	"model_view" 				"weapon_lightninggun_view"

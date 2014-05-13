@@ -63,7 +63,7 @@ entityDef weapon_shotgun
 	"editor_menu"				"pickup"
 	"editor_var inv_weaponmod"		"comma separated of any of the following shotgun modifications.\n - weapon_shotgun_ammo"
 
-	"spawnclass"				"idItem"
+	"spawnclass"				"" // Changed -> Removing the Shotgun from the game
 	"weaponclass"				"rvWeaponShotgun"
 	"size"					"32 32 32"
 	"model_view" 				"weapon_shotgun_view"

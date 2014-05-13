@@ -58,7 +58,7 @@ entityDef weapon_hyperblaster
 
 	"editor_usage"				"HyperBlaster"
 
-	"spawnclass"				"idItem"
+	"spawnclass"				"" // Changed -> Removing the Hyperblaster from the game
 	"weaponclass"				"rvWeaponHyperblaster"
 	"size"						"32 32 32"
   	"model_view"				"weapon_hyperblaster_view"

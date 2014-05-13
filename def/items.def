@@ -130,7 +130,7 @@ entityDef item_health
 	"editor_color"			".3 .3 1"
 	"editor_mins"			"-10 -10 0"
 	"editor_maxs"			"10 10 16"
-	"spawnclass"			"idItem"
+	"spawnclass"			"" // Changed -> Removing health from the game
 	"model" 				"models/items/health/health.lwo"
 	"mins"					"-10 -10 0"
 	"maxs"					"10 10 16"
@@ -255,7 +255,7 @@ entityDef item_armor
 	"editor_mins"			"-16 -16 0"
 	"editor_maxs"			"16 16 32"
 
-	"spawnclass"			"idItem"
+	"spawnclass"			"" Changed -> Removing armor from the game
 	"model"					"models/items/armor/armor.lwo"
 	"size"					"32 32 32"
 	"editor_copy100"		"inv_item"

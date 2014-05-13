@@ -81,7 +81,7 @@ entityDef weapon_grenadelauncher
 	"dirOffset"					"0 0 .2"
 	
 	"inv_weapon"				"weapon_grenadelauncher"
-	"inv_start_ammo_grenadelauncher"	"10"
+	"inv_start_ammo_grenadelauncher"	"0" // Changed -> Start with no ammo
 	"inv_item"					"1"
 	"inv_icon"					"gfx/guis/hud/icons/item_grenade.tga"
 	"inv_name"					"#str_107403"	
@@ -139,6 +139,7 @@ entityDef weapon_grenadelauncher
 entityDef weapon_grenadelauncher_mp
 {
 	"inherit"				"weapon_grenadelauncher"
+	"spawnclass"			"" // Added -> Removing all grenadelauncher spawns, will start with this weapon
 	"clipsize"				"0"
 	"editor_ignore"				"1"
 	"inv_icon"				"gfx/guis/hud/icons/item_grenade_colored"
@@ -236,7 +237,7 @@ entityDef projectile_grenade
 	"def_damage"				"damage_grenadeDirect"
 	"def_splash_damage"			"damage_grenadeSplash"
 																											
-	"speed"						"700"
+	"speed"						"1000" // Changed -> Increasing the speed of the grenade
 	"angular_velocity"			"-10 5 1"
 	"settle_duration"			"0.08"
 	
@@ -245,12 +246,12 @@ entityDef projectile_grenade
 	"contact_friction"			"10"
 	"bounce"					".65"
 	"gravity"					"1"
-	"fuse"						"2.5"
+	"fuse"						"60" // Changed -> Grenades will not despawn for 1 min
 								
-	"detonate_on_fuse"			"1"
+	"detonate_on_fuse"			"0" // Changed -> Grenades will not explode on the fuse timer
 	"detonate_on_death"			"0"
 	"detonate_on_world"			"0"
-	"detonate_on_actor"			"1"
+	"detonate_on_actor"			"0" // Changed -> Grenades will not explode on player contact
 	"detonateTestGroundMaterial"	"1"
 								
 	"impact_gib"				"1"								
@@ -324,6 +325,7 @@ entityDef damage_grenadeSplash
 entityDef damage_grenadeSplash_mp
 {
 	"inherit"					"damage_grenadeSplash"
-	"damage"					"100"
+	"damage"					"0" // Changed -> Grenades will have no splash damage
+	"knockback"					"0" // Added -> Grenades will have no knockback
 	"radius"					"150"
 }
