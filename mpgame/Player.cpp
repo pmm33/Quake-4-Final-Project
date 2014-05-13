@@ -8409,6 +8409,9 @@ idPlayer::PerformImpulse
 */
 void idPlayer::PerformImpulse( int impulse ) {
 
+	idVec3	offset;							// Added -> Used for the dodging ability
+	idMat3	playerViewAxis;					// Added -> Used for the dodging ability
+
 	if ( gameLocal.isClient ) {
 		idBitMsg	msg;
 		byte		msgBuf[MAX_EVENT_PARAM_SIZE];
@@ -8500,6 +8503,20 @@ void idPlayer::PerformImpulse( int impulse ) {
    			}
    			break;
    		}
+ 		case IMPULSE_23: {	// Added -> Dodge left ability
+			if ( gameLocal.isClient || entityNumber == gameLocal.localClientNum ) {
+				gameLocal.GetPlayerView( offset, playerViewAxis );
+				physicsObj.SetLinearVelocity( physicsObj.GetLinearVelocity() + (playerViewAxis[1] * 2000) );
+			}
+			break;
+		}
+  		case IMPULSE_24: {	// Added -> Dodge right ability
+			if ( gameLocal.isClient || entityNumber == gameLocal.localClientNum ) {
+				gameLocal.GetPlayerView( offset, playerViewAxis );
+				physicsObj.SetLinearVelocity( physicsObj.GetLinearVelocity() + (playerViewAxis[1] * -2000) );
+			}
+			break;
+		}
 				
 		case IMPULSE_28: {
  			if ( gameLocal.isClient || entityNumber == gameLocal.localClientNum ) {
