@@ -39,7 +39,7 @@ entityDef ammo_default
 
 	"fx_respawn"				"effects/mp/itemrespawn.fx"
 	"snd_acquire"				"items_ammo_default"
-	"respawn"				"40"
+	"respawn"					"120" // Changed from 40 -> Ammo only respawns every 2 mins now
 	"editor_ignore"				"1"
 	"inherit"				"ammo_triggersize_SP"
 }
@@ -75,7 +75,7 @@ entityDef ammo_machinegun_mp
 	"model"					"models/items/ammo/ammo_box.lwo"	
 	"skin"					"skins/items/ammo/machinegun"
 	"skin_pickup"				"skins/items/ammo/machinegun_pickup"
-	"inv_ammo_machinegun"			"60"
+	"inv_ammo_grenadelauncher"	"1" // Changed -> Machinegun ammo now gives 1 grenade upon pickup
 	"inv_icon"				"gfx/guis/hud/icons/item_machinegun_colored"
 }
 
@@ -109,7 +109,7 @@ entityDef ammo_nailgun_mp
 	"model"					"models/items/ammo/ammo_box.lwo"	
 	"skin"					"skins/items/ammo/nailgun"
 	"skin_pickup"				"skins/items/ammo/nailgun_pickup"
-	"inv_ammo_nailgun"			"50"
+	"inv_ammo_grenadelauncher"	"1" // Changed -> Nailgun ammo now gives 1 grenade upon pickup
 	"inv_icon"				"gfx/guis/hud/icons/item_nailgun_colored"
 }
 
@@ -142,7 +142,7 @@ entityDef ammo_railgun_mp
 	"model"					"models/items/ammo/ammo_box.lwo"		
 	"skin"					"skins/items/ammo/railgun"
 	"skin_pickup"				"skins/items/ammo/railgun_pickup"	
-	"inv_ammo_railgun"			"10"
+	"inv_ammo_grenadelauncher"	"1" // Changed -> Railgun ammo now gives 1 grenade upon pickup
 	"inv_icon"				"gfx/guis/hud/icons/item_railgun_colored"
 }
 
@@ -175,7 +175,7 @@ entityDef ammo_shotgun_mp
 	"model"					"models/items/ammo/ammo_box.lwo"	
 	"skin"					"skins/items/ammo/shotgun"
 	"skin_pickup"				"skins/items/ammo/shotgun_pickup"
-	"inv_ammo_shotgun"			"16"
+	"inv_ammo_grenadelauncher"	"1" // Changed -> Shotgun ammo now gives 1 grenade upon pickup
 	"inv_icon"				"gfx/guis/hud/icons/item_shotgun_colored"
 }
 
@@ -205,7 +205,7 @@ entityDef ammo_hyperblaster_mp
 	"model"					"models/items/ammo/ammo_box.lwo"	
 	"skin"					"skins/items/ammo/hyperblaster"
 	"skin_pickup"				"skins/items/ammo/hyperblaster_pickup"
-	"inv_ammo_hyperblaster"			"50"
+	"inv_ammo_grenadelauncher"	"1" // Changed -> Hyperblaster ammo now gives 1 grenade upon pickup
 	"inv_icon"				"gfx/guis/hud/icons/item_hyperblaster_colored"
 }
 
@@ -235,7 +235,7 @@ entityDef ammo_rocketlauncher_mp
 	"model"					"models/items/ammo/ammo_box.lwo"
 	"skin"					"skins/items/ammo/rocketlauncher"
 	"skin_pickup"				"skins/items/ammo/rocketlauncher_pickup"
-	"inv_ammo_rocketlauncher"		"5"
+	"inv_ammo_grenadelauncher"	"1" // Changed -> Rocketlauncher ammo now gives 1 grenade upon pickup
 	"inv_icon"				"gfx/guis/hud/icons/item_rocket_colored"
 }
 
@@ -265,7 +265,7 @@ entityDef ammo_grenadelauncher_mp
 	"model"					"models/items/ammo/ammo_box.lwo"	
 	"skin"					"skins/items/ammo/grenadelauncher"
 	"skin_pickup"				"skins/items/ammo/grenadelauncher_pickup"
-	"inv_ammo_grenadelauncher"		"5"
+	"inv_ammo_grenadelauncher"	"1" // Changed -> Grenadelauncher ammo now only gives 1 grenade upon pickup
 	"inv_icon"				"gfx/guis/hud/icons/item_grenade_colored"
 }
 
@@ -297,7 +297,7 @@ entityDef ammo_lightninggun_mp
 	"model"					"models/items/ammo/ammo_box.lwo"	
 	"skin"					"skins/items/ammo/lightninggun"
 	"skin_pickup"				"skins/items/ammo/lightninggun_pickup"
-	"inv_ammo_lightninggun"			"60"
+	"inv_ammo_grenadelauncher"	"1" // Changed -> Lightning Gun ammo now gives 1 grenade upon pickup
 	"inv_icon"				"gfx/guis/hud/icons/item_lightning_colored"
 	"fx_idle"				""
 }
@@ -330,7 +330,7 @@ entityDef ammo_dmg_mp
 	"model"					"models/items/ammo/ammo_box.lwo"	
 	"skin"					"skins/items/ammo/dmg"
 	"skin_pickup"				"skins/items/ammo/dmg_pickup"
-	"inv_ammo_dmg"				"5"
+	"inv_ammo_grenadelauncher"	"1" // Changed -> DMG ammo now gives 1 grenade upon pickup
 	"inv_icon"				"gfx/guis/hud/icons/item_darkmatter_colored"
 	"fx_idle"				""
 }
