@@ -3,6 +3,7 @@
 
 #include "../Game_local.h"
 #include "../Weapon.h"
+#include "../Projectile.h" // Added -> Needed for projectile casting in catching ability
 
 class rvWeaponGauntlet : public rvWeapon {
 public:
@@ -215,7 +216,7 @@ void rvWeaponGauntlet::Attack ( void ) {
 	gameLocal.TracePoint(	owner, tr, 
 							playerViewOrigin, 
 							playerViewOrigin + playerViewAxis[0] * range, 
-							MASK_SHOT_RENDERMODEL, owner );
+							16910853, owner ); // Changed -> Trace specifically to a projectile's exact clipmask
 // RAVEN END
 	owner->WeaponFireFeedback( &weaponDef->dict );
 
@@ -231,6 +232,19 @@ void rvWeaponGauntlet::Attack ( void ) {
 		
 	// Entity we hit?
 	ent = gameLocal.entities[tr.c.entityNum];
+
+	// Added -> If the entity is a projectile (being only a grenade) and the player does not currently have a dodgeball, then destroy the dodgeball, kill the owner if there is one, and add a dodgeball to the player's inventory
+	if (ent->IsType( idProjectile::GetClassType() ) && !(owner->inventory.HasAmmo("weapon_grenadelauncher")))
+	{
+		if (static_cast<idProjectile *>( ent )->GetOwner() != NULL && static_cast<idProjectile *>( ent )->GetOwner() != owner)
+		{
+			// Deal and extremely large amount of damage based on gauntlet damage (reason for overkill damage in .def file)
+			static_cast<idProjectile *>( ent )->GetOwner()->Damage ( owner, owner, playerViewAxis[0], spawnArgs.GetString ( "def_damage" ), 9999.0f, 0 );
+		}
+		ent->PostEventMS( &EV_Remove, 0 );
+		owner->GiveItem("ammo_grenadelauncher");
+		return;
+	}
 
 	// If the impact material changed then stop the impact effect 
 	if ( (tr.c.materialType && tr.c.materialType->Index ( ) != impactMaterial) ||
@@ -285,7 +299,7 @@ void rvWeaponGauntlet::Attack ( void ) {
 			if ( ent->fl.takedamage ) {
 				float dmgScale = 1.0f;
 				dmgScale *= owner->PowerUpModifier( PMOD_MELEE_DAMAGE );
-				ent->Damage ( owner, owner, playerViewAxis[0], spawnArgs.GetString ( "def_damage" ), dmgScale, 0 );
+				// ent->Damage ( owner, owner, playerViewAxis[0], spawnArgs.GetString ( "def_damage" ), dmgScale, 0 ); // Changed -> Prevent the gauntlet from doing damage to players normally
 				StartSound( "snd_hit", SND_CHANNEL_ANY, 0, false, NULL );
 				if ( ent->spawnArgs.GetBool( "bleed" ) ) {
 					PlayLoopSound( LOOP_FLESH );

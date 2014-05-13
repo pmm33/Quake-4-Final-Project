@@ -261,7 +261,7 @@ void idProjectile::Create( idEntity* _owner, const idVec3 &start, const idVec3 &
  	physicsObj.SetOrigin( start );
  	physicsObj.SetAxis( axis );
 
- 	physicsObj.GetClipModel()->SetOwner( ignore ? ignore : _owner );
+ 	// physicsObj.GetClipModel()->SetOwner( ignore ? ignore : _owner ); // Changed -> So the player can interact with their own dodgeballs
 	physicsObj.extraPassEntity = extraPassEntity;
 
 	owner = _owner;
@@ -638,6 +638,7 @@ idProjectile::Collide
 =================
 */
 bool idProjectile::Collide( const trace_t &collision, const idVec3 &velocity ) {
+	owner = NULL; // Added -> Wipe the owner upon collision
 	bool dummy = false;
 	return Collide( collision, velocity, dummy );
 }
@@ -818,6 +819,12 @@ bool idProjectile::Collide( const trace_t &collision, const idVec3 &velocity, bo
 		return false;
 	} else if ( canDamage && ent->IsType( idActor::GetClassType() ) ) {
 		if ( !projectileFlags.detonate_on_actor ) {
+			// Added -> Kill with grenade contact without explosion
+			if (owner != NULL && ent != owner) // Added -> Deal damage only if the ball hasn't bounced off of anything
+			{
+				ent->Damage( this, owner, dir, damageDefName, 9999.0f, CLIPMODEL_ID_TO_JOINT_HANDLE( collision.c.id ) ); // Changed -> Made super powerful
+				owner = NULL; // Wipe owner upon collision
+			}
 			return false;
 		}
 	} else {
@@ -868,9 +875,11 @@ bool idProjectile::Collide( const trace_t &collision, const idVec3 &velocity, bo
  				if ( damageDefName[0] != '\0' ) {
 					idVec3 dir = velocity;
 					dir.Normalize();
-					actualHitEnt->Damage( this, owner, dir, damageDefName, damagePower, CLIPMODEL_ID_TO_JOINT_HANDLE( collision.c.id ) );
+					if (owner != NULL & actualHitEnt != owner) // Added -> Deal damage only if the ball hasn't bounced off of anything
+						actualHitEnt->Damage( this, owner, dir, damageDefName, 9999.0f, CLIPMODEL_ID_TO_JOINT_HANDLE( collision.c.id ) ); // Changed -> Made super powerful
 				}
 			}
+			owner = NULL; // Added -> Wipe the owner after a collision
 			return false;		
 		}
 	}
@@ -926,7 +935,11 @@ bool idProjectile::Collide( const trace_t &collision, const idVec3 &velocity, bo
 				}
 			}	
 // RAVEN END
- 			ent->Damage( this, owner, dir, damageDefName, damagePower, hitJoint );
+			if (owner != NULL && ent != owner) // Added -> Deal Damage only if the ball hasn't bounced off of anything
+			{
+ 				ent->Damage( this, owner, dir, damageDefName, 9999.0f, hitJoint ); // Changed -> Made super powerful
+				owner = NULL; // Added -> Wipe owner after a collision
+			}
 			
 			if( owner && owner->IsType( idPlayer::GetClassType() ) && ent->IsType( idActor::GetClassType() ) ) {
 				statManager->WeaponHit( (const idActor*)(owner.GetEntity()), ent, methodOfDeath, hitCount == 0 );			
@@ -967,12 +980,14 @@ bool idProjectile::Collide( const trace_t &collision, const idVec3 &velocity, bo
 
 		// don't predict explosions on clients
 		if ( gameLocal.isClient ) {
+			owner = NULL; // Added -> Wipe owner after a collision
 			return true;
 		}
 
 		Explode( &collision, false, ignore );
 	}
 
+	owner = NULL; // Added -> Wipe owner after a collision
 	return true;
 }
 

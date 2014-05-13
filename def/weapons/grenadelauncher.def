@@ -301,7 +301,7 @@ entityDef damage_grenadeDirect
 entityDef damage_grenadeDirect_mp
 {
 	"inherit"					"damage_grenadeDirect"
-	"damage"					"100"
+	"damage"					"9999" // Changed -> Direct hits with a dodgeball are instant kills
 	"knockback"					"100"
 }
 
