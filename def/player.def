@@ -741,16 +741,16 @@ entityDef player_marine
 	"ammo_none"						"-1"
 
 	"max_ammo_blaster"					"-1"
-	"max_ammo_railgun"					"50"
-	"max_ammo_machinegun"					"300"
-	"max_ammo_nailgun"					"300"
-	"max_ammo_shotgun"					"50"
-	"max_ammo_hyperblaster"					"400"
-	"max_ammo_napalmgun"					"100"
-	"max_ammo_rocketlauncher"				"40"
+	"max_ammo_railgun"					"0"
+	"max_ammo_machinegun"					"0"
+	"max_ammo_nailgun"					"0"
+	"max_ammo_shotgun"					"0"	// Changed -> So that other ammo will not be picked up when full on grenades
+	"max_ammo_hyperblaster"					"0"
+	"max_ammo_napalmgun"					"0"
+	"max_ammo_rocketlauncher"				"0"
 	"max_ammo_grenadelauncher"				"1" // Changed -> Can only hold one dodgeball at a time
-	"max_ammo_lightninggun"					"400"
-	"max_ammo_dmg"						"25"
+	"max_ammo_lightninggun"					"0"
+	"max_ammo_dmg"						"0"
 	"max_ammo_none"						"-1"
 
 	// inventory items
