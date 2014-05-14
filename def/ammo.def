@@ -39,7 +39,7 @@ entityDef ammo_default
 
 	"fx_respawn"				"effects/mp/itemrespawn.fx"
 	"snd_acquire"				"items_ammo_default"
-	"respawn"					"120" // Changed from 40 -> Ammo only respawns every 2 mins now
+	"respawn"					"60" // Changed from 120 -> Ammo respawns every minute now
 	"editor_ignore"				"1"
 	"inherit"				"ammo_triggersize_SP"
 }
